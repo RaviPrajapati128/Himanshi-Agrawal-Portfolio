@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Himanshi@Terminal:~</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&display=swap');
+        :root { --neon-green: #00ff41; --matrix-bg: #0d0208; }
+        body { background-color: var(--matrix-bg); color: #e0e0e0; font-family: 'JetBrains Mono', monospace; scroll-behavior: smooth; }
+        .glitch { text-shadow: 2px 0 #ff00c1, -2px 0 #00fff9; }
+        .scanline { background: linear-gradient(to bottom, transparent 50%, rgba(0, 255, 65, 0.05) 50%); background-size: 100% 4px; pointer-events: none; position: fixed; inset: 0; z-index: 50; }
+        .hidden-page { display: none; }
+        .active-tab { border-left: 4px solid var(--neon-green); background: rgba(0, 255, 65, 0.1); padding-left: 10px; }
+        input:focus { outline: none; }
+    </style>
+</head>
+<body class="p-4 lg:p-12 overflow-x-hidden">
+    <div class="scanline"></div>
+
+    <div id="boot-screen" class="fixed inset-0 z-[100] bg-black flex flex-col p-6 text-sm text-[#00ff41]">
+        <div id="boot-log"></div>
+    </div>
+
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between border-b border-zinc-800 pb-4 mb-8">
+        <div>
+            <span class="text-zinc-500">HOST:</span> <span class="text-[#00ff41]">himanshiagrawal1919@gmail.com</span>
+            <br>
+            <span class="text-zinc-500">USER:</span> <span class="text-white">Himanshi Agrawal</span>
+        </div>
+        <div class="flex gap-8 text-xs uppercase tracking-[0.2em] mt-4 md:mt-0 font-bold">
+            <button onclick="nav('home')" id="btn-home" class="text-[#00ff41] active-tab">01.Init</button>
+            <button onclick="nav('projects')" id="btn-projects" class="hover:text-[#00ff41]">02.Files</button>
+            <button onclick="nav('skills')" id="btn-skills" class="hover:text-[#00ff41]">03.Core</button>
+            <button onclick="nav('contact')" id="btn-contact" class="hover:text-[#00ff41]">04.Link</button>
+        </div>
+    </div>
+
+    <main class="max-w-6xl mx-auto min-h-[60vh]">
+
+        <section id="page-home" class="animate-pulse">
+            <div class="mb-6 border border-zinc-800 p-2 inline-block text-[10px] text-zinc-500">
+                AUTH_LEVEL: ASPIRING_DATA_SCIENTIST
+            </div>
+            
+            <div class="flex flex-col gap-8 mb-12">
+                <div>
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6 italic text-[#00ff41]">
+                        > Hello, World_
+                    </h1>
+                    <p class="text-lg md:text-xl text-zinc-400 max-w-3xl leading-relaxed mb-8">
+                        I am a <span class="text-white">Data Analyst</span> proficient in Python, MySQL, Power BI, and Excel. 
+                        I specialize in building interactive dashboards and predictive models to drive data-driven decisions.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-4 mt-6">
+                        <a href="https://www.linkedin.com/in/himanshiagrawalindia/" target="_blank" class="border border-[#00ff41] px-4 py-2 text-xs font-bold hover:bg-[#00ff41]/20 transition-all text-[#00ff41]">
+                            [ LINKEDIN ]
+                        </a>
+                        <a href="https://github.com/HimanshiAgrawal27" target="_blank" class="border border-[#00ff41] px-4 py-2 text-xs font-bold hover:bg-[#00ff41]/20 transition-all text-[#00ff41]">
+                            [ GITHUB ]
+                        </a>
+                        <a href="https://drive.google.com/file/d/1GA6kk0v3Suf-Jh-010hjqpav4XIWmbLz/view?usp=drive_link" target="_blank" download class="bg-[#00ff41] text-black px-4 py-2 text-xs font-bold hover:bg-white transition-all">
+                            DOWNLOAD_RESUME.exe
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+                <div class="border border-zinc-800 p-4 bg-zinc-900/20">
+                    <div class="text-xs text-zinc-500 mb-2">STATUS</div>
+                    <div class="text-sm">Data Analyst & Data Science Enthusiast</div>
+                </div>
+                <div class="border border-zinc-800 p-4 bg-zinc-900/20">
+                    <div class="text-xs text-zinc-500 mb-2">LOCATION</div>
+                    <div class="text-sm">Ahmedabad, Gujarat, India</div>
+                </div>
+                <div class="border border-zinc-800 p-4 bg-zinc-900/20">
+                    <div class="text-xs text-zinc-500 mb-2">EDUCATION</div>
+                    <div class="text-sm">Bachelor of Science in Information Technology (B.Sc. IT) </div>
+                </div>
+            </div>
+
+            <div class="border-t border-zinc-800 pt-10">
+                <h2 class="text-xl font-bold text-[#00ff41] mb-6">cat /about_me.log</h2>
+                <div class="flex flex-col lg:flex-row gap-10">
+                    <div class="w-full lg:w-1/3 space-y-4">
+                        <div class="bg-zinc-900/50 p-4 border-l-2 border-[#00ff41]">
+                            <h4 class="text-xs font-bold text-[#00ff41] mb-2 uppercase tracking-widest">// Quick_Details</h4>
+                            <ul class="text-[11px] space-y-2">
+                                <li><span class="text-zinc-500">IDENTITY:</span> Himanshi Agrawal</li>
+                                <li><span class="text-zinc-500">FOCUS:</span> Data Science & Analytics</li>
+                                <li><span class="text-zinc-500">DEGREE:</span> Bachelor of Science in IT (JG University)</li>
+                                <li><span class="text-zinc-500">EXPERTISE:</span> Python, SQL, ML, Power BI</li>
+                                <li><span class="text-zinc-500">CERTIFICATION:</span> Master in Data Science & Analytics with AI (IT Vedant)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="flex-1 bg-zinc-900/30 p-6 border-l-2 border-[#00ff41] text-zinc-300 leading-relaxed">
+                        <p class="mb-4">
+                            I am a results-oriented professional. My educational journey began with a <span class="text-white font-bold">Bachelor of Science in Information Technology</span> from <span class="text-[#00ff41]">JG University</span>, providing me with a robust technical background.
+                        </p>
+                        <p class="mb-4">
+                            My core competency lies in transforming complex datasets into actionable business intelligence. With a specialized focus on Machine Learning and Statistical Analysis, I have developed a portfolio of projects ranging from Vendor Procurement Dashboards to Predictive Placement Models.
+                        </p>
+                        <p>
+                            I am dedicated to continuous learning and am currently leveraging my academic background to solve real-world problems through data-driven storytelling and advanced analytical techniques.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-projects" class="hidden-page">
+            <h2 class="text-2xl font-bold text-white mb-8">DIR C:\PROJECT_ROOT\ANALYSIS</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="border-l-2 border-zinc-800 p-6 bg-zinc-900/10 hover:bg-[#00ff41]/5 transition-all group relative">
+                    <span class="text-[10px] text-zinc-500">EXCEL | MYSQL | POWER BI</span>
+                    <h3 class="text-xl font-bold group-hover:text-[#00ff41]">Procurement Vendor Analysis</h3>
+                    <p class="text-sm text-zinc-400 mt-2 mb-4">Analyzed vendor performance, department spending, and delivery efficiency.</p>
+                    <a href="https://github.com/HimanshiAgrawal27/Procurement-Vendor-Analysis-Dashboard" target="_blank" class="text-[#00ff41] text-xs font-bold hover:underline">SOURCE_CODE >></a>
+                </div>
+                <div class="border-l-2 border-zinc-800 p-6 bg-zinc-900/10 hover:bg-[#00ff41]/5 transition-all group relative">
+                    <span class="text-[10px] text-zinc-500">PYTHON | STREAMLIT | SCIKIT-LEARN</span>
+                    <h3 class="text-xl font-bold group-hover:text-[#00ff41]">Campus Placement Prediction</h3>
+                    <p class="text-sm text-zinc-400 mt-2 mb-4">Logistic Regression model achieving 86.73% accuracy for student placement outcomes.</p>
+                    <div class="flex gap-4">
+                        <a href="https://github.com/HimanshiAgrawal27/Campus-Placement-Prediction-Analytics-Dashboard" target="_blank"  class="text-[#00ff41] text-xs font-bold hover:underline">GITHUB_LINK >></a>
+                        <a href="https://campus-placement-prediction-analytics-dashboard-byhimanshi.streamlit.app/" target="_blank" class="text-[#00ff41] text-xs font-bold hover:underline">LIVE_DEMO >></a>
+                    </div>
+                </div>
+                <div class="border-l-2 border-zinc-800 p-6 bg-zinc-900/10 hover:bg-[#00ff41]/5 transition-all group relative">
+                    <span class="text-[10px] text-zinc-500">PYTHON | MYSQL | STREAMLIT</span>
+                    <h3 class="text-xl font-bold group-hover:text-[#00ff41]">Hospital Management System</h3>
+                    <p class="text-sm text-zinc-400 mt-2 mb-4">Automated workflows for patient records, doctor info, and appointments.</p>
+                    <a href="https://github.com/HimanshiAgrawal27/Hospital_management_system" target="_blank" class="text-[#00ff41] text-xs font-bold hover:underline">SOURCE_CODE >></a>
+                </div>
+                <div class="border-l-2 border-zinc-800 p-6 bg-zinc-900/10 hover:bg-[#00ff41]/5 transition-all group relative">
+                    <span class="text-[10px] text-zinc-500">POWER BI</span>
+                    <h3 class="text-xl font-bold group-hover:text-[#00ff41]">Finance Insights Dashboard</h3>
+                    <p class="text-sm text-zinc-400 mt-2 mb-4">Built interactive dashboard to analyze Budget vs Actual expenses.</p>
+                    <a href="https://github.com/HimanshiAgrawal27/Finance-insight-dashbaord" target="_blank" class="text-[#00ff41] text-xs font-bold hover:underline">GITHUB_LINK >></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-skills" class="hidden-page">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <h2 class="text-xl font-bold border-b border-[#00ff41] pb-2 mb-6">TECHNICAL_SKILL_MATRIX</h2>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="text-xs mb-2 text-zinc-500">PROGRAMMING & LIBRARIES</div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-zinc-800 px-3 py-1 text-xs">Python</span>
+                                <span class="bg-zinc-800 px-3 py-1 text-xs">SQL</span>
+                                <span class="bg-zinc-800 px-3 py-1 text-xs">Pandas</span>
+                                <span class="bg-zinc-800 px-3 py-1 text-xs">NumPy</span>
+                                <span class="bg-zinc-800 px-3 py-1 text-xs">Matplotlib</span>
+                                <span class="bg-zinc-800 px-3 py-1 text-xs">Seaborn</span>
+                                <span class="bg-zinc-800 px-3 py-1 text-xs">Scikit-learn</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="text-xs mb-2 text-zinc-500">MACHINE LEARNING</div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-zinc-800 px-3 py-1 text-xs">Regression</span>
+                                <span class="bg-zinc-800 px-3 py-1 text-xs">Classification</span>
+                                <span class="bg-zinc-800 px-3 py-1 text-xs">Clustering</span>
+                                <span class="bg-zinc-800 px-3 py-1 text-xs">Predictive Modelling</span>
+                                <span class="bg-zinc-800 px-3 py-1 text-xs">Statistical Analysis</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="text-xs mb-2 text-zinc-500">BI & TOOLS</div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-zinc-800 px-3 py-1 text-xs">Power BI</span>
+                                <span class="bg-zinc-800 px-3 py-1 text-xs">Tableau</span>
+                                <span class="bg-zinc-800 px-3 py-1 text-xs">Advanced Excel</span>
+                                <span class="bg-zinc-800 px-3 py-1 text-xs">MySQL</span>
+                                <span class="bg-zinc-800 px-3 py-1 text-xs">Streamlit</span>
+                                <span class="bg-zinc-800 px-3 py-1 text-xs">DAX</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-zinc-900/30 p-6 border border-zinc-800">
+                    <h2 class="text-xl font-bold mb-4 italic text-[#00ff41]">_certifications.log</h2>
+                    <ul class="text-xs space-y-4">
+                        <li class="flex gap-4">
+                            <span class="text-zinc-600">12.2025</span>
+                            <span>Power BI Essentials - IT Vedant</span>
+                        </li>
+                        <li class="flex gap-4">
+                            <span class="text-zinc-600">11.2025</span>
+                            <span>MySQL Mastery - IT Vedant</span>
+                        </li>
+                        <li class="flex gap-4">
+                            <span class="text-zinc-600">01.2026</span>
+                            <span>Python Essentials for Data Science - IT Vedant</span>
+                        </li>
+                        <li class="flex gap-4">
+                            <span class="text-zinc-600">02.2026</span>
+                            <span>NumPy and Statistical Analysis - IT Vedant</span>
+                        </li>
+                        <li class="flex gap-4">
+                            <span class="text-zinc-600">04.2026</span>
+                            <span>NPTEL-Python for Data Science (80% Score)</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-contact" class="hidden-page">
+            <div class="max-w-xl mx-auto border border-[#00ff41] p-8">
+                <h3 class="text-center font-bold mb-8 tracking-widest text-[#00ff41]">ESTABLISH_HANDSHAKE</h3>
+                <div class="space-y-4 text-sm">
+                    <div class="flex justify-between"><span>EMAIL</span> <span class="text-zinc-400">himanshiagrawal1919@gmail.com</span></div>
+                    <div class="flex justify-between"><span>TEL</span> <span class="text-zinc-400">+91-7046100969</span></div>
+                    <div class="mt-8 border-t border-zinc-800 pt-4 text-center">
+                        <a href="https://www.linkedin.com/in/himanshiagrawalindia/" class="text-[#00ff41] hover:underline">[ LINKEDIN_PROFILE ]</a>
+                        <br><br>
+                        <a href="https://github.com/HimanshiAgrawal27" class="text-[#00ff41] hover:underline">[ GITHUB_REPOSITORY ]</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="max-w-6xl mx-auto mt-12 border-t border-zinc-800 pt-6">
+        <div class="flex gap-4 items-center">
+            <span class="text-[#00ff41] font-bold">himanshi@root:~$</span>
+            <input type="text" id="cli" class="bg-transparent text-white w-full" placeholder="Try 'ls' or 'cd skills'..." autocomplete="off">
+        </div>
+    </footer>
+
+    <script>
+        function nav(id) {
+            document.querySelectorAll('section').forEach(s => s.classList.add('hidden-page'));
+            document.querySelectorAll('nav button').forEach(b => b.classList.remove('active-tab', 'text-[#00ff41]'));
+            document.getElementById('page-'+id).classList.remove('hidden-page');
+            document.getElementById('btn-'+id).classList.add('active-tab', 'text-[#00ff41]');
+        }
+
+        document.getElementById('cli').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                const cmd = this.value.toLowerCase();
+                if (cmd === 'ls') nav('projects');
+                if (cmd.includes('skills')) nav('skills');
+                if (cmd.includes('contact')) nav('contact');
+                if (cmd === 'clear' || cmd === 'home') nav('home');
+                this.value = '';
+            }
+        });
+
+        const logs = [
+            "Mounting /dev/sda1...",
+            "Loading Himanshi_Agrawal_Profile...",
+            "Checking Analytical_Skills... OK",
+            "Establishing Connection... OK",
+            "Ready."
+        ];
+        let i = 0;
+        function showLogs() {
+            if (i < logs.length) {
+                document.getElementById('boot-log').innerHTML += `<div>[  OK  ] ${logs[i]}</div>`;
+                i++;
+                setTimeout(showLogs, 400);
+            } else {
+                setTimeout(() => document.getElementById('boot-screen').style.display = 'none', 500);
+            }
+        }
+        window.onload = showLogs;
+    </script>
+</body>
+</html>
